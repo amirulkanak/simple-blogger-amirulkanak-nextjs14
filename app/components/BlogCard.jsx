@@ -8,7 +8,7 @@ const BlogCard = ({ post }) => {
 
   // ...existing code...
   return (
-    <div className="w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 flex flex-col p-4 gap-4 rounded-lg shadow-md">
+    <div className="w-full max-w-60 bg-gradient-to-l from-slate-300 to-slate-100 text-slate-600 border border-slate-300 flex flex-col p-4 gap-4 rounded-lg shadow-md">
       <div className="text-lg font-bold capitalize rounded-md">
         {truncateText(post.title, 50)}
       </div>
