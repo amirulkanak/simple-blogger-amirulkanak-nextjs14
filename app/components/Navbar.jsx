@@ -1,6 +1,11 @@
 import Link from 'next/link';
-const isAuthenticated = false;
+import { LoginLink, LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
+
 const Navbar = async () => {
+  const { isAuthenticated, getUser } = getKindeServerSession();
+  const user = await getUser();
+
   return (
     <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
       <ul className="flex space-x-4">
@@ -16,14 +21,14 @@ const Navbar = async () => {
         </li>
       </ul>
       <div>
-        {!isAuthenticated ? (
-          <button className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
+        {!(await isAuthenticated()) ? (
+          <LoginLink className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
             Log in
-          </button>
+          </LoginLink>
         ) : (
-          <button className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
+          <LogoutLink className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
             Log out
-          </button>
+          </LogoutLink>
         )}
       </div>
     </nav>
