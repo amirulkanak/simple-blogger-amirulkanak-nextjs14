@@ -1,7 +1,6 @@
 import Link from 'next/link';
-
-const Navbar = () => {
-  const isAuthenticated = false;
+const isAuthenticated = false;
+const Navbar = async () => {
   return (
     <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
       <ul className="flex space-x-4">
@@ -17,13 +16,13 @@ const Navbar = () => {
         </li>
       </ul>
       <div>
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <button className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
-            Logout
+            Log in
           </button>
         ) : (
           <button className="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700">
-            Login
+            Log out
           </button>
         )}
       </div>
